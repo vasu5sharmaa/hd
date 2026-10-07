@@ -1,0 +1,6 @@
+Put your optional music file here as music.mp3
+(index.html already points to assets/music.mp3)
+
+If no file is present, the site automatically plays a soft
+generated lullaby (Web Audio) when she taps the "music" pill.
+No action needed — the site works either way.

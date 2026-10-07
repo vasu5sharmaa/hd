@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#FFF8EC" />
+<title>For You 🧸 — a tiny journey</title>
+<meta name="description" content="A tiny animated journey made to make you smile." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- ═════════ EDIT ME: messages / colors / signature live in HTML + CSS :root ═════════ -->
+
+<div class="grain" aria-hidden="true"></div>
+<div id="glow-bg" aria-hidden="true"><span class="glow g1"></span><span class="glow g2"></span><span class="glow g3"></span></div>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div id="dust" aria-hidden="true"></div>
+
+<header class="hud">
+  <div class="hud-left">
+    <span class="hud-bear" aria-hidden="true">🧸</span>
+    <span class="hud-title">for you</span>
+  </div>
+  <div class="hud-right">
+    <div class="progress-dots" id="dots" aria-hidden="true"></div>
+    <!-- MUSIC: optional. Add your own file at assets/music.mp3 — if present it plays, otherwise a soft generated lullaby plays. -->
+    <button id="musicBtn" class="music-btn" aria-pressed="false" aria-label="Play soft music">
+      <span class="music-icon" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="music-label">music</span>
+    </button>
+  </div>
+  <div class="progress-line"><span id="progressFill"></span></div>
+</header>
+
+<!-- floating companion reacts to scroll -->
+<div id="companion" aria-hidden="true"><div class="companion-bear">🧸</div><div class="companion-tip" id="companionTip">he's with you</div></div>
+
+<main id="journey">
+
+  <!-- ═══════ SCENE 1 : OPENING HUG ═══════ -->
+  <section class="scene scene-1 is-active" id="s1" data-theme="cream" data-tip="come here for a moment">
+    <div class="sky sky-cream" aria-hidden="true">
+      <div class="sun sun-soft"></div>
+      <div class="cloud c1" data-parallax="0.12"></div>
+      <div class="cloud c2" data-parallax="0.2"></div>
+      <div class="cloud c3" data-parallax="0.08"></div>
+      <div class="hill h1"></div><div class="hill h2"></div>
+      <div class="flower-row" aria-hidden="true">
+        <span class="fl f1">🌷</span><span class="fl f2">🌼</span><span class="fl f3">🌸</span><span class="fl f4">🌷</span><span class="fl f5">🌼</span>
+      </div>
+      <div class="sparkles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="stage">
+      <div class="teddy-slot" data-pose="walk-wave-hug" data-teddy></div>
+      <div class="hug-burst" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p class="eyebrow reveal">a tiny world, just for you</p>
+      <h1 class="line-big reveal d1">Come here for a moment… <span class="hug-emoji">🫂</span></h1>
+      <div class="card reveal d2">
+        <p>You deserve a warm hug today.</p>
+        <p>If I could, I'd give you one myself.</p>
+        <p class="soft">So let this little bear do it for me.</p>
+      </div>
+      <p class="hint reveal d3">a tiny story in 8 little moments · let him walk you through <span class="scroll-arrow">→</span></p>
+      <button class="continue" data-go="#s2">take a little walk with him →</button>
+    </div>
+  </section>
+
+  <!-- ═══════ SCENE 2 : CALM ═══════ -->
+  <section class="scene scene-2" id="s2" data-theme="lavender" data-tip="breathe with him">
+    <div class="sky sky-lav" aria-hidden="true">
+      <div class="moon"></div>
+      <div class="twinkles"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="cloud big cb1" data-parallax="0.1"></div>
+      <div class="cloud big cb2" data-parallax="0.18"></div>
+      <div class="cloud big main-cloud" data-parallax="0.05"></div>
+    </div>
+    <div class="stage">
+      <div class="teddy-slot on-cloud" data-pose="sit-breathe" data-teddy></div>
+      <div class="breath-ring" aria-hidden="true"><span></span></div>
+      <p class="eyebrow reveal">a calm little moment</p>
+      <h2 class="reveal">You don't have to be okay<br>every single moment.</h2>
+      <div class="card reveal d1">
+        <p>Some days just feel a little heavier.</p>
+        <p>So take your time,<br>breathe slowly,<br>and be gentle with yourself.</p>
+      </div>
+      <div class="breathe-widget reveal d2" aria-hidden="true">
+        <span class="b-dot"></span><span class="b-text">breathe in… and out</span>
+      </div>
+      <button class="continue" data-go="#s3">he wants to sit with you →</button>
+    </div>
+  </section>
+
+  <!-- ═══════ SCENE 3 : LISTENING ═══════ -->
+  <section class="scene scene-3" id="s3" data-theme="blue" data-tip="he's listening">
+    <div class="sky sky-blue" aria-hidden="true">
+      <div class="cozy-glow"></div>
+      <div class="rug"></div>
+      <div class="lamp"><span></span></div>
+      <div class="motes"><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="stage">
+      <div class="teddy-slot" data-pose="listen" data-teddy></div>
+      <div class="speech reveal d1" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p class="eyebrow reveal">you can talk to me</p>
+      <h2 class="reveal">And hey…</h2>
+      <div class="card reveal d1">
+        <p>Whenever you feel like talking,<br>you can tell me whatever is on your mind.</p>
+        <p>You don't need the perfect words.<br>You don't even need to know where to start.</p>
+        <p class="soft big">Just tell me…<br>I'll listen.</p>
+      </div>
+      <div class="talk-box reveal d2">
+        <p class="talk-label">psst — tap him, he nods 💬</p>
+      </div>
+      <button class="continue" data-go="#s4">he found something →</button>
+    </div>
+  </section>
+
+  <!-- ═══════ SCENE 4 : LETTER ═══════ -->
+  <section class="scene scene-4" id="s4" data-theme="peach" data-tip="a letter for you">
+    <div class="sky sky-peach" aria-hidden="true">
+      <div class="paper-plane">🕊️</div>
+      <div class="float-hearts"><i>·</i><i>·</i><i>·</i></div>
+    </div>
+    <div class="stage">
+      <div class="teddy-slot" data-pose="letter" data-teddy></div>
+      <button class="envelope reveal d1" id="envelope" aria-label="Open the letter">
+        <span class="env-body"><span class="env-flap"></span><span class="env-letter">✉</span><span class="env-seal">🧸</span></span>
+        <span class="env-shadow"></span>
+        <span class="env-tap">tap to open</span>
+      </button>
+      <div class="letter-pop" id="letterPop" aria-hidden="true">
+        <div class="letter-paper">
+          <p class="lp-head">a tiny letter, just for you ✉</p>
+          <p class="lp-body">Whatever you're carrying today — the happy, the heavy, even the things you can't quite explain — you can leave it here with me for a while. Nothing you feel is too much, too silly, or too small to say out loud.</p>
+          <p class="lp-sign">I'm not going anywhere. — your bear 🧸</p>
+        </div>
+      </div>
+      <p class="eyebrow reveal">no judgement, ever</p>
+      <h2 class="reveal">You never have to hide<br>how you feel from me.</h2>
+      <div class="card reveal d1">
+        <p>You can tell me the things that make you happy,</p>
+        <p>the things that bother you,</p>
+        <p>or even the things you can't explain.</p>
+        <p class="soft big">I will always hear you, okay?</p>
+      </div>
+      <button class="continue" data-go="#s5">the sky is changing →</button>
+    </div>
+  </section>
+
+  <!-- ═══════ SCENE 5 : RAIN → RAINBOW ═══════ -->
+  <section class="scene scene-5" id="s5" data-theme="rain" data-tip="hold on, sun's coming">
+    <div class="sky sky-rain" aria-hidden="true">
+      <div class="cloud dark cd1" data-parallax="0.12"></div>
+      <div class="cloud dark cd2" data-parallax="0.2"></div>
+      <div class="rain" id="rain"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="sunbeam" id="sunbeam"></div>
+      <svg class="rainbow" id="rainbow" viewBox="0 0 400 200" aria-hidden="true">
+        <path d="M20 190 A180 180 0 0 1 380 190" fill="none" stroke="#ff9aa2" stroke-width="18" stroke-linecap="round"/>
+        <path d="M42 190 A158 158 0 0 1 358 190" fill="none" stroke="#ffc98b" stroke-width="18" stroke-linecap="round"/>
+        <path d="M64 190 A136 136 0 0 1 336 190" fill="none" stroke="#f9e79a" stroke-width="18" stroke-linecap="round"/>
+        <path d="M86 190 A114 114 0 0 1 314 190" fill="none" stroke="#a8d8a8" stroke-width="18" stroke-linecap="round"/>
+        <path d="M108 190 A92 92 0 0 1 292 190" fill="none" stroke="#a8c8ec" stroke-width="18" stroke-linecap="round"/>
+        <path d="M130 190 A70 70 0 0 1 270 190" fill="none" stroke="#c3b2e8" stroke-width="18" stroke-linecap="round"/>
+      </svg>
+      <div class="rainbow-flowers" id="rainbowFlowers"><span>🌷</span><span>🌼</span><span>🌸</span><span>🌿</span><span>🌷</span></div>
+    </div>
+    <div class="stage">
+      <div class="teddy-slot" data-pose="umbrella" data-teddy data-extra="umbrella"></div>
+      <p class="eyebrow reveal">rain, then rainbow</p>
+      <h2 class="reveal">Not every day<br>is going to feel perfect.</h2>
+      <div class="card reveal d1">
+        <p>But a difficult day doesn't mean<br>a difficult tomorrow.</p>
+        <p>Give yourself some time.</p>
+        <p class="soft big">Brighter moments will find<br>their way back.</p>
+      </div>
+      <button class="continue" data-go="#s6">look, something's growing →</button>
+    </div>
+  </section>
+
+  <!-- ═══════ SCENE 6 : LITTLE HAPPY THINGS ═══════ -->
+  <section class="scene scene-6" id="s6" data-theme="green" data-tip="little happy things">
+    <div class="sky sky-green" aria-hidden="true">
+      <div class="sun happy-sun"></div>
+      <div class="balloon b1">🎈</div><div class="balloon b2">🎈</div>
+      <div class="bird">﹏🐦﹏</div>
+      <div class="butterflies"><span class="bf bf1">🦋</span><span class="bf bf2">🦋</span><span class="bf bf3">🦋</span></div>
+    </div>
+    <div class="stage">
+      <div class="teddy-slot" data-pose="garden" data-teddy data-extra="seed"></div>
+      <div class="garden" aria-hidden="true">
+        <div class="soil"><span class="seed" id="seed">·</span><span class="sprout" id="sprout">🌱</span><span class="bloom" id="bloom">🌷</span></div>
+      </div>
+      <p class="eyebrow reveal">little happy things</p>
+      <h2 class="reveal">There are still so many<br>little moments waiting for you.</h2>
+      <div class="card reveal d1">
+        <p>Little laughs. Silly conversations.<br>Peaceful evenings. Random reasons to smile.</p>
+        <p class="soft big">And days that make you happy<br>without even trying.</p>
+      </div>
+      <button class="continue" data-go="#s7">he has something for you →</button>
+    </div>
+  </section>
+
+  <!-- ═══════ SCENE 7 : A LITTLE LOVE ═══════ -->
+  <section class="scene scene-7" id="s7" data-theme="pink" data-tip="for you ♡">
+    <div class="sky sky-pink" aria-hidden="true">
+      <div class="glow-heart-bg"></div>
+      <div class="petals"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="stage">
+      <div class="teddy-slot" data-pose="heart" data-teddy data-extra="heart"></div>
+      <p class="eyebrow reveal">a little love, gently</p>
+      <h2 class="reveal">You know something?</h2>
+      <div class="card reveal d1">
+        <p>Your happiness really matters to me.</p>
+        <p>Even on your not-so-good days,<br>you're still someone very special to me.</p>
+        <p class="soft big">So whenever things feel a little too much…<br>come talk to me.</p>
+      </div>
+      <button class="continue" data-go="#s8">one last thing →</button>
+    </div>
+  </section>
+
+  <!-- ═══════ SCENE 8 : FINAL HUG ═══════ -->
+  <section class="scene scene-8" id="s8" data-theme="warm" data-tip="the biggest hug">
+    <div class="sky sky-warm" aria-hidden="true">
+      <div class="sun big-sun"></div>
+      <div class="cloud c1"></div><div class="cloud c2"></div>
+      <div class="butterflies"><span class="bf bf1">🦋</span><span class="bf bf2">🦋</span></div>
+      <div class="flower-row"><span class="fl f1">🌷</span><span class="fl f2">🌼</span><span class="fl f3">🌸</span><span class="fl f4">🌷</span><span class="fl f5">🌼</span><span class="fl f6">🌸</span></div>
+      <div class="sparkles"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+    <div class="stage">
+      <div class="teddy-slot final-teddy" data-pose="big-hug" data-teddy></div>
+      <div class="hug-burst big" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <p class="eyebrow reveal">the big hug</p>
+      <h2 class="reveal">You don't have to figure<br>everything out today.</h2>
+      <div class="card reveal d1">
+        <p>Just take one day at a time<br>and be kind to yourself.</p>
+        <p class="soft big">And whenever you need someone beside you…<br>I'm here.</p>
+      </div>
+      <div class="card glow-card reveal d2">
+        <p class="big">Now give me that little smile. 🌷</p>
+        <p class="soft">That's all I wanted.</p>
+      </div>
+      <div class="sign reveal d3">
+        <p class="sign-hug">Sending you the biggest hug, cutie. 🧸❤️</p>
+        <p class="sign-name">— Vatsal</p>
+        <button class="replay" id="replayBtn">↻ walk with him again</button>
+      </div>
+      <p class="wave-note" aria-hidden="true">he's waving bye… but he's always here ♡</p>
+    </div>
+    <footer class="finale-fade" aria-hidden="true"></footer>
+  </section>
+
+</main>
+
+<nav class="pager" aria-label="Story pages">
+  <button id="prevBtn" class="pager-back" aria-label="Go back one moment">← back</button>
+  <span class="pager-count" id="pageCount">1 · 8</span>
+</nav>
+
+<audio id="localAudio" loop preload="none" src="assets/music.mp3"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
