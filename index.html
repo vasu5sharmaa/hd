@@ -41,3 +41,371 @@ body[data-scene="1"] .ground{transform:translateY(105%)}
 .cheek{fill:#ff9aa8;opacity:.3;transition:opacity .6s}
 .pz{transform-origin:100px 232px;transition:transform .9s cubic-bezier(.3,1.3,.5,1)}
 .wrap{transform-origin:100px 232px;animation:breathe 3.6s ease-in-out infinite}
+[data-eyes=closed] .wrap{animation-duration:6s}
+@keyframes breathe{50%{transform:scale(1.015,1.035)}}
+.armL,.armR,.legL,.legR,.head{transition:transform .9s cubic-bezier(.3,1.4,.5,1)}
+.armL{transform-origin:62px 138px;transform:rotate(8deg)}.armR{transform-origin:138px 138px;transform:rotate(-8deg)}
+.legL{transform-origin:76px 192px}.legR{transform-origin:124px 192px}
+.head{transform-origin:100px 138px}.sway{transform-origin:100px 138px;animation:sway 7s ease-in-out infinite}
+@keyframes sway{30%{transform:rotate(2.5deg)}70%{transform:rotate(-2.5deg)}}
+.eyes{transform-origin:100px 82px;animation:blink 4.6s infinite}.pupils{transform-origin:100px 82px;transition:transform .5s}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.08)}}
+.eyesC{opacity:0}[data-eyes=closed] .eyes{opacity:0}[data-eyes=closed] .eyesC{opacity:1}
+.m{opacity:0;transition:opacity .3s}
+[data-mouth=smile] .smile,[data-mouth=shy] .shy,[data-mouth=open] .open,[data-mouth=oh] .oh{opacity:1}
+[data-mouth=shy] .cheek{opacity:.75}
+/* walking */
+[data-walk="1"] .wrap{animation:waddle .7s ease-in-out infinite}
+@keyframes waddle{25%{transform:rotate(3deg) translateY(-4px)}75%{transform:rotate(-3deg) translateY(-4px)}}
+[data-walk="1"] .legL{animation:step .7s infinite}[data-walk="1"] .legR{animation:step .7s -.35s infinite}
+@keyframes step{50%{transform:rotate(-22deg)}}
+[data-walk="1"] .armL{animation:sw1 .7s infinite}[data-walk="1"] .armR{animation:sw2 .7s infinite}
+@keyframes sw1{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(26deg)}}
+@keyframes sw2{0%,100%{transform:rotate(2deg)}50%{transform:rotate(-26deg)}}
+/* poses */
+[data-pose=wave] .armR{animation:wave .55s ease-in-out infinite alternate}
+@keyframes wave{from{transform:rotate(-135deg)}to{transform:rotate(-168deg)}}
+[data-pose=wave] .head{transform:rotate(6deg)}
+[data-pose=open] .armL{transform:rotate(114deg)}[data-pose=open] .armR{transform:rotate(-114deg)}
+[data-pose=open] .head{transform:rotate(-5deg) translateY(-2px)}
+[data-pose=hug] .armL,[data-pose=squeeze] .armL{transform:rotate(-80deg)}[data-pose=hug] .armR,[data-pose=squeeze] .armR{transform:rotate(80deg)}
+[data-pose=hug] .head,[data-pose=squeeze] .head{transform:rotate(-7deg) translateY(2px)}
+[data-pose=hug] .wrap{animation:squeeze 2.8s ease-in-out infinite}[data-pose=squeeze] .wrap{animation:squeeze 1.8s ease-in-out infinite}
+@keyframes squeeze{50%{transform:scale(.93,1.04)}}
+:is([data-pose=sit],[data-pose=pat],[data-pose=listen],[data-pose=umbsit]) .pz{transform:translateY(18px)}
+:is([data-pose=sit],[data-pose=pat],[data-pose=listen],[data-pose=umbsit]) .legL{transform:rotate(58deg)}
+:is([data-pose=sit],[data-pose=pat],[data-pose=listen],[data-pose=umbsit]) .legR{transform:rotate(-58deg)}
+[data-pose=pat] .armL{animation:pat .7s ease-in-out infinite alternate}
+@keyframes pat{from{transform:rotate(62deg)}to{transform:rotate(84deg)}}
+[data-pose=pat] .head{transform:rotate(-8deg)}
+[data-pose=listen] .pz{transform:translateY(18px) rotate(-4deg)}
+[data-pose=listen] .head{animation:listen 8s ease-in-out infinite}
+@keyframes listen{0%,30%{transform:rotate(-8deg)}38%{transform:rotate(-8deg) translateY(5px)}46%{transform:rotate(-8deg)}54%{transform:rotate(-8deg) translateY(5px)}62%{transform:rotate(-8deg)}78%{transform:rotate(6deg)}90%,100%{transform:rotate(-8deg)}}
+[data-pose=lookup] .head{transform:rotate(-9deg) translateY(-3px)}[data-pose=lookup] .pupils{transform:translateY(-4px)}
+[data-pose=lookup] .torso{animation:shiver .25s 6}@keyframes shiver{50%{transform:translateX(1.5px)}}
+[data-pose=umbsit] .armR{transform:rotate(-152deg)}[data-pose=umbsit] .head{transform:rotate(5deg)}
+.mark{font:700 36px Quicksand,sans-serif;fill:#ff8fab;opacity:0;transform-box:fill-box;transform-origin:center}
+[data-pose=notice] .mark{animation:pop .5s forwards}@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.3)}60%{transform:scale(1.2)}to{opacity:1}}
+[data-pose=notice] .pupils{transform:scale(1.2)}[data-pose=notice] .head{transform:rotate(-6deg) translateY(-3px)}
+[data-pose=pick] .pz{transform:rotate(14deg) translateY(10px)}[data-pose=pick] .head{transform:rotate(8deg)}
+[data-pose=pick] .armL{transform:rotate(-30deg)}[data-pose=pick] .armR{transform:rotate(30deg)}
+[data-pose=read] .head{transform:rotate(7deg) translateY(7px)}[data-pose=read] .armL{transform:rotate(-40deg)}[data-pose=read] .armR{transform:rotate(40deg)}
+[data-pose=reassure] .head{transform:rotate(-6deg)}[data-pose=reassure] .armL{transform:rotate(-34deg)}[data-pose=reassure] .armR{transform:rotate(34deg)}
+[data-pose=dig] .pz{transform:rotate(16deg) translateY(10px)}[data-pose=dig] .head{transform:rotate(10deg)}
+[data-pose=dig] .armR{animation:dig .55s ease-in-out infinite alternate}@keyframes dig{from{transform:rotate(18deg)}to{transform:rotate(55deg)}}
+[data-pose=wait] .head{transform:rotate(9deg)}[data-pose=wait] .armL{transform:rotate(-24deg)}[data-pose=wait] .armR{transform:rotate(24deg)}
+[data-pose=happy] .pz{animation:hop .75s ease-in-out infinite}@keyframes hop{50%{transform:translateY(-22px)}}
+[data-pose=happy] .armL{transform:rotate(150deg)}[data-pose=happy] .armR{transform:rotate(-150deg)}
+[data-pose=watch] .head{animation:watch 5s ease-in-out infinite}@keyframes watch{0%,100%{transform:rotate(-12deg) translateY(-2px)}50%{transform:rotate(12deg) translateY(-3px)}}
+[data-pose=offer] .armL{transform:rotate(-26deg)}[data-pose=offer] .armR{transform:rotate(26deg)}[data-pose=offer] .head{transform:rotate(7deg)}
+/* held items */
+.env,.heart{opacity:0;transition:opacity .4s}
+.umb{transform-origin:100px 12px;transform:scale(0);transition:transform .6s cubic-bezier(.3,1.7,.5,1)}
+[data-held=umb] .umb{transform:scale(1)}
+:is([data-held=env],[data-held=envopen]) .env{opacity:1}
+.flapO{opacity:0}.letter{transition:transform 1.4s cubic-bezier(.3,1.2,.5,1);filter:drop-shadow(0 0 6px #fff3b0)}
+[data-held=envopen] .letter{transform:translateY(-36px)}[data-held=envopen] .flapO{opacity:1}[data-held=envopen] .flapC{opacity:0}
+[data-held=heart] .heart{opacity:1}
+.heart{transform-origin:100px 165px;transition:transform .9s cubic-bezier(.3,1.4,.5,1),opacity .4s;filter:drop-shadow(0 0 7px #ffb3c6)}
+.hb{transform-origin:100px 165px;animation:beat 1.4s ease-in-out infinite}@keyframes beat{50%{transform:scale(1.12)}}
+[data-pose=offer] .heart{transform:translateY(-6px) scale(1.9)}
+
+/* ===== WORLD ===== */
+.cloud{width:44vw;max-width:260px;height:auto;aspect-ratio:2;color:#fff;opacity:.8;animation:drift 80s linear infinite}
+.c1{top:6svh;animation-delay:-20s}.c2{top:30svh;width:30vw;animation-duration:110s;animation-delay:-70s;opacity:.55}.c3{top:48svh;animation-duration:95s;animation-delay:-45s;opacity:.5}
+@keyframes drift{from{transform:translateX(-60vw)}to{transform:translateX(120vw)}}
+.rc{aspect-ratio:2;color:#9aa4c4;width:70vw;max-width:420px;top:-3svh;opacity:0;transform:translateY(-30%);transition:opacity 2.5s,transform 3.5s}
+.r1{left:-10%}.r2{left:35%;top:2svh}.r3{left:75%;top:-6svh}
+body[data-scene="4"] .rc{opacity:.95;transform:none}
+body[data-wx=sun] .rc{opacity:0;transform:translateX(90vw);transition:opacity 4s,transform 5s}
+.bank{left:-10%;right:-10%;bottom:6svh;height:17svh;background:#fff;border-radius:50% 50% 0 0/70% 70% 0 0;opacity:0;transform:translateY(50%);transition:1.8s;z-index:2}
+.bank::before,.bank::after{content:'';position:absolute;background:#fff;border-radius:50%}
+.bank::before{left:8%;top:-34%;width:42%;aspect-ratio:1}.bank::after{right:6%;top:-52%;width:50%;aspect-ratio:1}
+body[data-scene="1"] .bank{opacity:.95;transform:none}
+.rug{left:6%;right:6%;bottom:11svh;height:11svh;border-radius:50%;background:#e8cfe3;opacity:0;transition:opacity 1.5s}
+.cush{bottom:14svh;width:min(22vw,100px);height:min(10vw,44px);background:#f4b9c4;border-radius:45% 45% 30% 30%;opacity:0;transition:opacity 1.5s;z-index:2;box-shadow:inset 0 -6px #0001}
+.c1.cush{left:30%;transform:translateX(-50%);background:#bcd8f5}.c2.cush{left:68%;transform:translateX(-50%)}
+.lamp{right:5%;bottom:14svh;width:6px;height:22svh;background:#c9b6a0;opacity:0;transition:opacity 1.5s}
+.lamp::before{content:'';position:absolute;left:50%;top:-10px;width:70px;height:46px;transform:translateX(-50%);background:radial-gradient(#fff3b8,#ffe08a);border-radius:50% 50% 8px 8px;box-shadow:0 0 60px 30px #ffe6a077}
+body[data-scene="2"] :is(.rug,.cush,.lamp){opacity:1}
+.wenv{left:37%;bottom:16svh;width:max(12vw,40px);max-width:56px;opacity:0;transform:scale(.4);transition:.6s cubic-bezier(.3,1.6,.5,1);filter:drop-shadow(0 0 8px #fff2b0)}
+body[data-scene="3"]:not([data-env]) .wenv{opacity:1;transform:none}
+.drop{top:-6%;width:2px;height:15px;background:linear-gradient(#fff0,#8fa6d8);opacity:0;transition:opacity 2s;animation:fall linear infinite}
+body:is([data-wx=rain]) .drop{opacity:.8}@keyframes fall{to{transform:translateY(112svh)}}
+.sun{right:-14vw;top:-14vw;width:62vw;max-width:420px;aspect-ratio:1;border-radius:50%;background:radial-gradient(#fff6c8,#ffe9a000 68%);opacity:0;transition:opacity 3s}
+body:is([data-wx=sun],[data-late]) .sun{opacity:1}
+.rainbow{left:50%;bottom:17svh;width:min(135vw,820px);transform:translateX(-50%);opacity:.9}
+.rainbow path{stroke-dasharray:460;stroke-dashoffset:460;transition:stroke-dashoffset 3s ease-out}
+.rainbow path:nth-child(2){transition-delay:.3s}.rainbow path:nth-child(3){transition-delay:.6s}.rainbow path:nth-child(4){transition-delay:.9s}.rainbow path:nth-child(5){transition-delay:1.2s}.rainbow path:nth-child(6){transition-delay:1.5s}
+body[data-scene="4"][data-wx=sun] .rainbow path{stroke-dashoffset:0}
+.fl{bottom:12svh;width:9vw;max-width:42px;height:auto;aspect-ratio:1/2;color:var(--c);transform:scale(0);transform-origin:50% 100%;transition:transform 1.4s cubic-bezier(.3,1.6,.5,1) var(--dl);z-index:1}
+body:is([data-wx=sun],[data-late]) .fl{transform:scale(1)}
+.seed{left:18%;bottom:15.5svh;width:9px;height:13px;border-radius:50%;background:#8a5a3c;opacity:0;box-shadow:0 0 10px 3px #ffe9a0;animation:glow 1.6s ease-in-out infinite alternate}
+@keyframes glow{to{box-shadow:0 0 16px 6px #fff1b8}}
+body[data-scene="5"][data-g="0"] .seed{opacity:1}
+.mound{left:66%;bottom:14.5svh;width:15vw;max-width:60px;height:3.5svh;border-radius:50% 50% 0 0;background:#a9795a;transform:translateX(-50%) scale(0);transition:.5s cubic-bezier(.3,1.6,.5,1);z-index:2}
+body[data-scene="5"]:is([data-g="2"],[data-g="3"]) .mound{transform:translateX(-50%) scale(1)}
+.sprout{left:66%;bottom:17svh;width:9vw;max-width:36px;transform:translateX(-50%) scale(0);transform-origin:50% 100%;transition:.7s cubic-bezier(.3,1.7,.5,1);z-index:2}
+body[data-scene="5"][data-g="3"] .sprout{transform:translateX(-50%) scale(1)}
+.plant{left:66%;bottom:14.5svh;width:15vw;max-width:62px;height:auto;aspect-ratio:1/2;transform:translateX(-50%) scale(0);transform-origin:50% 100%;transition:transform 1.6s cubic-bezier(.3,1.6,.5,1);z-index:2}
+body[data-scene="5"][data-g="4"] .plant,body:is([data-scene="6"],[data-scene="7"]) .plant{transform:translateX(-50%) scale(1)}
+.bf{width:30px;height:23px;opacity:0;transition:opacity 1.5s;animation:flap .28s ease-in-out infinite alternate,wander 14s ease-in-out infinite;z-index:4}
+.f1{left:50%;top:52%}.f2{left:72%;top:46%;animation-delay:0s,-5s}.f3{left:24%;top:58%;animation-delay:0s,-9s}
+@keyframes flap{to{scale:.35 1}}
+@keyframes wander{0%,100%{translate:0 0}25%{translate:-40px -30px}50%{translate:30px -50px}75%{translate:50px -15px}}
+body:is([data-fly],[data-scene="6"],[data-scene="7"]) .bf{opacity:.9}
+.bird{top:30svh;left:-60px;width:40px;height:16px;opacity:0}
+body[data-fly] .bird{opacity:1;animation:cross 9s linear 1,bob .5s ease-in-out infinite alternate}
+@keyframes cross{to{transform:translateX(115vw)}}@keyframes bob{from{margin-top:0}to{margin-top:-8px}}
+.bln{width:9vw;max-width:38px;aspect-ratio:.82;border-radius:50% 50% 48% 48%;transform:translateY(80svh);transition:transform 3s cubic-bezier(.2,.8,.3,1);z-index:1}
+.bln::after{content:'';position:absolute;left:50%;top:100%;width:1.5px;height:7svh;background:#9a8aa5}
+.b1{left:3%;bottom:30svh;background:#f7b6c9}.b2{right:4%;bottom:38svh;background:#c9b6f0;transition-delay:.4s}.b3{left:86%;bottom:24svh;background:#ffd98a;transition-delay:.8s}
+body[data-late] .bln{transform:none;animation:float 5s ease-in-out infinite alternate}@keyframes float{to{margin-bottom:12px}}
+#fx{inset:0;pointer-events:none;z-index:5}
+.p,.drop{position:absolute;font-style:normal}
+.p{bottom:-5%;color:#ffe08a;opacity:0;text-shadow:0 0 8px #fff2b0;animation:rise linear infinite}
+.p:nth-child(3n){color:#fff}.p:nth-child(5n){color:#ffc2d4}
+@keyframes rise{10%{opacity:.8}90%{opacity:.6}to{transform:translateY(-112svh) rotate(120deg);opacity:0}}
+.hp{display:none;color:#ff9fb8}body[data-love] .hp{display:block}
+body[data-end] .p{text-shadow:0 0 14px gold;filter:brightness(1.15)}
+
+/* ===== TEXT / UI ===== */
+.card{position:fixed;left:50%;top:max(14px,env(safe-area-inset-top));width:min(90vw,430px);transform:translateX(-50%);padding:15px 18px;border-radius:24px;background:#fffaf2d0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 30px #8a6a8a22;font-size:clamp(.92rem,3.9vw,1.1rem);line-height:1.5;text-align:center;font-weight:500;opacity:0;transition:opacity .6s;pointer-events:none;z-index:10}
+.card.on{opacity:1}
+.card span{display:block;opacity:0;transform:translateY(8px);animation:in .8s forwards}
+.card .sp{height:.45em}.card .sig{font:600 1.7em Caveat,cursive;color:#c4607f;line-height:1.2}
+@keyframes in{to{opacity:1;transform:none}}
+.hint{position:fixed;bottom:calc(10px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);font-size:.85rem;opacity:0;z-index:9;pointer-events:none}
+body[data-ready] .hint{opacity:.7;animation:nudge 1.8s ease-in-out infinite}body[data-scene="7"] .hint{display:none}
+@keyframes nudge{50%{transform:translate(-50%,4px)}}
+.music{position:fixed;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));display:flex;gap:8px;z-index:11}
+.music[hidden]{display:none}
+.music button{width:44px;height:44px;border-radius:50%;border:0;background:#fffaf2dd;box-shadow:0 4px 14px #8a6a8a33;font-size:1.05rem;color:var(--ink);cursor:pointer}
+.music button:focus-visible{outline:3px solid #c4607f}
+.music #play.pulse{animation:pulse 1.6s ease-in-out infinite}@keyframes pulse{0%,100%{box-shadow:0 0 0 0 #ffb3c6cc,0 4px 14px #8a6a8a33}50%{box-shadow:0 0 0 12px #ffb3c600,0 4px 14px #8a6a8a33}}
+@media (prefers-reduced-motion:reduce){.cloud,.p,.bf,.drop{animation:none}.sway,.eyes{animation:none}}
+
+</style>
+</head>
+<body data-scene="0">
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="cloud" viewBox="0 0 200 100"><g fill="currentColor"><circle cx="60" cy="62" r="32"/><circle cx="100" cy="44" r="40"/><circle cx="146" cy="62" r="30"/><rect x="40" y="62" width="136" height="32" rx="16"/></g></symbol>
+<symbol id="flower" viewBox="0 0 40 80"><rect x="19" y="26" width="3" height="54" fill="#8dc28b"/><path d="M21 60q12-2 14-12-11 0-14 12" fill="#a8d8a0"/><g fill="currentColor"><circle cx="20" cy="9" r="7.5"/><circle cx="30.5" cy="16.6" r="7.5"/><circle cx="26.5" cy="28.9" r="7.5"/><circle cx="13.5" cy="28.9" r="7.5"/><circle cx="9.5" cy="16.6" r="7.5"/></g><circle cx="20" cy="20" r="5.5" fill="#ffd96b"/></symbol>
+<symbol id="bfly" viewBox="0 0 40 30"><g fill="currentColor"><ellipse cx="12" cy="10" rx="11" ry="9"/><ellipse cx="28" cy="10" rx="11" ry="9"/><ellipse cx="14" cy="21" rx="7" ry="6"/><ellipse cx="26" cy="21" rx="7" ry="6"/></g><rect x="19" y="5" width="2" height="21" rx="1" fill="#7a5c6b"/></symbol>
+<symbol id="bird" viewBox="0 0 40 16"><path d="M0 10Q10 -3 20 10Q30 -3 40 10Q30 6 20 15Q10 6 0 10z" fill="#8d93b8"/></symbol>
+</defs></svg>
+
+<div class="sky"></div>
+<div class="stage" id="stage">
+  <div class="sun"></div>
+  <svg class="rainbow" viewBox="0 0 300 150" fill="none" stroke-width="12" stroke-linecap="round">
+    <path d="M10 150a140 140 0 0 1 280 0" stroke="#ffb7b7"/><path d="M24 150a126 126 0 0 1 252 0" stroke="#ffd9a8"/>
+    <path d="M38 150a112 112 0 0 1 224 0" stroke="#fff0a8"/><path d="M52 150a98 98 0 0 1 196 0" stroke="#bfe8b8"/>
+    <path d="M66 150a84 84 0 0 1 168 0" stroke="#b5d9f8"/><path d="M80 150a70 70 0 0 1 140 0" stroke="#d6c4f5"/>
+  </svg>
+  <div class="far">
+    <svg class="cloud c1"><use href="#cloud"/></svg><svg class="cloud c2"><use href="#cloud"/></svg><svg class="cloud c3"><use href="#cloud"/></svg>
+    <svg class="rc r1"><use href="#cloud"/></svg><svg class="rc r2"><use href="#cloud"/></svg><svg class="rc r3"><use href="#cloud"/></svg>
+  </div>
+  <div class="bln b1"></div><div class="bln b2"></div><div class="bln b3"></div>
+  <svg class="bird"><use href="#bird"/></svg>
+  <div class="bank"></div>
+  <div class="ground"></div>
+  <div class="rug"></div><div class="cush c1"></div><div class="cush c2"></div><div class="lamp"></div>
+  <svg class="wenv" viewBox="0 0 44 32"><rect x="1" y="1" width="42" height="30" rx="5" fill="#fff5e6" stroke="#e5b9a0" stroke-width="2"/><path d="M2 3l20 15L42 3" fill="#f7d4c4" stroke="#e5b9a0" stroke-width="2"/></svg>
+  <i class="seed"></i><i class="mound"></i>
+  <svg class="sprout" viewBox="0 0 30 30"><path d="M15 30V14M15 18q-10-2-11-10 9 0 11 10M15 16q8-1 11-9-9-1-11 9" fill="#a8d8a0" stroke="#7fba7a" stroke-width="2" stroke-linejoin="round"/></svg>
+  <svg class="plant" style="color:#f4a3c0"><use href="#flower"/></svg>
+  <svg class="fl" style="left:5%;--c:#f7b6c9;--dl:.1s"><use href="#flower"/></svg>
+  <svg class="fl" style="left:20%;--c:#ffd98a;--dl:.5s"><use href="#flower"/></svg>
+  <svg class="fl" style="left:82%;--c:#c9b6f0;--dl:.3s"><use href="#flower"/></svg>
+  <svg class="fl" style="left:92%;--c:#ffb59a;--dl:.7s"><use href="#flower"/></svg>
+  <svg class="bf f1" style="color:#f2a6c8"><use href="#bfly"/></svg><svg class="bf f2" style="color:#b5d3f5"><use href="#bfly"/></svg><svg class="bf f3" style="color:#ffd27d"><use href="#bfly"/></svg>
+  <div id="fx"></div>
+
+  <!-- ===== TEDDY DESIGN: edit shapes/colors here (fur colors live in style.css :root) ===== -->
+  <div class="teddy" id="teddy" data-pose="idle" data-eyes="open" data-mouth="smile" data-held="" data-walk="0">
+  <svg class="bear" viewBox="0 0 200 240">
+    <ellipse cx="100" cy="234" rx="58" ry="8" fill="#6a4a6a22"/>
+    <g class="pz"><g class="wrap">
+      <g class="umb"><path d="M100 12V150" stroke="#b89a8a" stroke-width="4"/><g transform="translate(0,12)"><path d="M20 0a80 60 0 0 1 160 0q-20-12-40 0-20-12-40 0-20-12-40 0-20-12-40 0z" fill="#f7b6c2" stroke="#e79aab" stroke-width="2"/><path d="M100-60q-18 24-20 60M100-60q18 24 20 60" stroke="#fff8" stroke-width="3" fill="none"/></g></g>
+      <ellipse class="legL f" cx="76" cy="208" rx="20" ry="26"/><ellipse class="legR f" cx="124" cy="208" rx="20" ry="26"/>
+      <g class="torso"><ellipse class="f" cx="100" cy="162" rx="48" ry="56"/><ellipse class="belly" cx="100" cy="172" rx="30" ry="36"/></g>
+      <ellipse class="armL f" cx="62" cy="168" rx="13" ry="31"/><ellipse class="armR f" cx="138" cy="168" rx="13" ry="31"/>
+      <g class="env"><path class="flapO" d="M78 150l22-18 22 18z" fill="#f7d4c4" stroke="#e5b9a0" stroke-width="2"/><g class="letter"><rect x="84" y="140" width="32" height="38" rx="3" fill="#fffdf5" stroke="#f1d9a8" stroke-width="2"/><path d="M90 150h20M90 157h20M90 164h12" stroke="#f0b8c6" stroke-width="2" stroke-linecap="round"/></g><rect x="78" y="152" width="44" height="30" rx="4" fill="#fff5e6" stroke="#e5b9a0" stroke-width="2"/><path class="flapC" d="M79 154l21 15 21-15" fill="#f7d4c4" stroke="#e5b9a0" stroke-width="2"/></g>
+      <g class="heart"><path class="hb" d="M100 182c-15-10-24-18-24-28a13 13 0 0 1 24-6 13 13 0 0 1 24 6c0 10-9 18-24 28z" fill="#ff8fab"/></g>
+      <g class="head"><g class="sway">
+        <circle class="f" cx="62" cy="46" r="18"/><circle class="belly" cx="62" cy="46" r="9"/><circle class="f" cx="138" cy="46" r="18"/><circle class="belly" cx="138" cy="46" r="9"/>
+        <circle class="f" cx="100" cy="85" r="52"/><ellipse class="belly" cx="100" cy="102" rx="24" ry="18"/>
+        <g class="eyes"><g class="pupils"><circle cx="79" cy="82" r="6.5" fill="#4a3034"/><circle cx="121" cy="82" r="6.5" fill="#4a3034"/><circle cx="81.5" cy="79.5" r="2.2" fill="#fff"/><circle cx="123.5" cy="79.5" r="2.2" fill="#fff"/></g></g>
+        <path class="eyesC" d="M72 84q7 7 14 0M114 84q7 7 14 0" fill="none" stroke="#4a3034" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="100" cy="94" rx="7" ry="5" fill="#7a4b3a"/>
+        <g fill="none" stroke="#7a4b3a" stroke-width="2.6" stroke-linecap="round"><path class="m smile" d="M90 104q10 9 20 0"/><path class="m shy" d="M94 105q6 4 12 0"/></g>
+        <path class="m open" d="M91 103q9 15 18 0z" fill="#c4606e" stroke="#7a4b3a" stroke-width="2" stroke-linejoin="round"/><ellipse class="m oh" cx="100" cy="108" rx="4" ry="5.5" fill="#c4606e"/>
+        <circle class="cheek" cx="66" cy="98" r="8"/><circle class="cheek" cx="134" cy="98" r="8"/>
+      </g></g>
+    </g></g>
+    <text class="mark" x="100" y="16" text-anchor="middle">!</text>
+  </svg></div>
+</div>
+
+<div class="card" id="card" aria-live="polite"></div>
+<div class="hint">tap anywhere for next ›</div>
+<div class="music" id="music"><button id="play" class="pulse" aria-label="Play music">♪</button><button id="mute" aria-label="Mute">🔊</button></div>
+<main class="track"></main>
+<script>
+/* ===== SETTINGS (edit me) ===== */
+const SPEED = 1;                 // animation timing: >1 = slower, <1 = faster
+const SIGNATURE = '— Vatsal';    // your signature (shown at the very end)
+const MUSIC_FILE = 'assets/music.mp3';   // drop your own file here
+const VOLUME = [.14,.24,.26,.26,.16,.30,.30,.22]; // music volume per scene (0–1)
+
+/* ===== MESSAGES (edit me) — one entry per scene; \n = new line, blank line = gap ===== */
+const MSG = [
+ ["Come here for a moment… 🫂\n\nYou deserve a warm hug today.\nIf I could, I'd give you one myself.\nSo let this little bear do it for me."],
+ ["You don't have to be okay every single moment.\n\nSome days just feel a little heavier.\n\nSo take your time,\nbreathe slowly,\nand be gentle with yourself."],
+ ["And hey…\n\nWhenever you feel like talking,\nyou can tell me whatever is on your mind.\n\nYou don't need the perfect words.\nYou don't even need to know where to start.\n\nJust tell me…\nI'll listen."],
+ ["You can tell me the things that make you happy,\nthe things that bother you,\nor even the things you can't explain.\n\nYou never have to hide how you feel from me.\n\nI will always hear you, okay?"],
+ ["Not every day is going to feel perfect.\n\nBut a difficult day doesn't mean\na difficult tomorrow.\n\nGive yourself some time.\n\nBrighter moments will find their way back."],
+ ["There are still so many little moments waiting for you.\n\nLittle laughs.\nSilly conversations.\nPeaceful evenings.\nRandom reasons to smile.\n\nAnd days that make you happy\nwithout even trying."],
+ ["You know something?\n\nYour happiness really matters to me.\n\nEven on your not-so-good days,\nyou're still someone very special to me.\n\nSo whenever things feel a little too much…\n\ncome talk to me."],
+ ["You don't have to figure everything out today.\n\nJust take one day at a time\nand be kind to yourself.\n\nAnd whenever you need someone beside you…\n\nI'm here.",
+  "Now give me that little smile. 🌷\n\nThat's all I wanted.",
+  "Sending you the biggest hug, cutie. 🧸❤️\n\n" + SIGNATURE]
+];
+
+/* ===== ENGINE ===== */
+const B = document.body, S = document.getElementById('stage'), T = document.getElementById('teddy'), card = document.getElementById('card');
+let timers = [], cur = -1, wk;
+const at = (s, fn) => timers.push(setTimeout(fn, s * SPEED * 1000));
+const set = o => { for (const k in o) T.dataset[k] = o[k]; };
+const sc = (s = 1, y = '0px') => { S.style.setProperty('--s', s); S.style.setProperty('--y', y); };
+function go(x, d = 2, s = 1, y = '0px') {   // walk teddy to x% over d seconds
+  S.style.setProperty('--x', x + '%'); S.style.setProperty('--d', d * SPEED + 's'); sc(s, y);
+  T.dataset.walk = 1; clearTimeout(wk); wk = setTimeout(() => T.dataset.walk = 0, d * SPEED * 1000);
+}
+function say(i, k = 0) {
+  const was = card.classList.contains('on'); card.classList.remove('on');
+  setTimeout(() => {
+    card.innerHTML = MSG[i][k].split('\n').map((l, n) => l
+      ? `<span class="${l.startsWith('—') ? 'sig' : ''}" style="animation-delay:${n * .28}s">${l}</span>` : '<span class="sp"></span>').join('');
+    card.classList.add('on');
+  }, was ? 450 : 0);
+}
+
+/* Each scene = a little choreography. Times are seconds after entering the scene. */
+const SC = [
+ () => { go(50, 3.6);                                                  // 1 walks in
+   at(3.7, () => set({ pose: 'wave', mouth: 'open' })); at(4.4, () => say(0));
+   at(6.2, () => set({ pose: 'open', mouth: 'smile' }));
+   at(7.4, () => { set({ pose: 'hug' }); sc(1.15); }); },
+ () => { go(74, 2.6, 1, '-4svh'); at(1.2, () => say(1));              // 2 climbs onto cloud, rests
+   at(2.9, () => set({ pose: 'sit', eyes: 'closed', mouth: 'shy' })); },
+ () => { go(68, 2.2); at(1, () => say(2));                             // 3 sits, pats cushion, listens
+   at(2.4, () => set({ pose: 'sit' })); at(3.4, () => set({ pose: 'pat' })); at(5.6, () => set({ pose: 'listen' })); },
+ () => { go(52, 2.2); at(1.5, () => say(3));                           // 4 finds the letter
+   at(2.5, () => set({ pose: 'notice', mouth: 'open' })); at(3.4, () => set({ pose: 'pick' }));
+   at(4, () => { B.dataset.env = 'held'; set({ held: 'env', pose: 'read', mouth: 'smile' }); });
+   at(5.6, () => set({ held: 'envopen' })); at(9.5, () => set({ pose: 'reassure', mouth: 'open' })); },
+ () => { go(50, 1.5);                                                  // 5 rain → rainbow
+   at(1.6, () => { B.dataset.wx = 'rain'; set({ pose: 'lookup', mouth: 'oh' }); }); at(2, () => say(4));
+   at(4, () => set({ pose: 'umbsit', held: 'umb', mouth: 'smile' }));
+   at(9, () => { B.dataset.wx = 'dry'; set({ pose: 'lookup', mouth: 'open' }); });
+   at(10.5, () => { B.dataset.wx = 'sun'; set({ pose: 'happy', held: '' }); }); },
+ () => { go(42, 1.8); at(1, () => say(5));                             // 6 plants a seed
+   at(2, () => set({ pose: 'notice', mouth: 'open' })); at(2.8, () => set({ pose: 'pick' }));
+   at(3.3, () => { B.dataset.g = 1; set({ pose: 'idle', mouth: 'smile' }); });
+   at(4.5, () => set({ pose: 'dig' })); at(4.8, () => B.dataset.g = 2);
+   at(6.3, () => set({ pose: 'wait' })); at(8, () => { B.dataset.g = 3; set({ pose: 'happy', mouth: 'open' }); });
+   at(9.6, () => set({ pose: 'idle', mouth: 'smile' }));
+   at(10, () => { B.dataset.g = 4; B.dataset.fly = 1; }); at(11.5, () => set({ pose: 'watch' })); },
+ () => { go(50, 2, 1.12); at(.8, () => set({ held: 'heart', pose: 'read' })); at(1.8, () => say(6)); // 7 the heart
+   at(3.8, () => set({ pose: 'idle' })); at(5, () => set({ pose: 'offer', mouth: 'shy' })); },
+ () => { go(50, 2.4, 1.18);                                            // 8 final hug
+   at(2.6, () => set({ pose: 'open' })); at(3.6, () => { set({ pose: 'hug' }); say(7, 0); });
+   at(9, () => set({ pose: 'squeeze' })); at(10.5, () => say(7, 1));
+   at(14.5, () => { say(7, 2); B.setAttribute('data-end', ''); });
+   at(18.5, () => set({ pose: 'open' })); at(19.5, () => { set({ pose: 'wave', mouth: 'open' }); sc(1); }); }
+];
+
+function enter(i) {
+  cur = i; timers.forEach(clearTimeout); timers = [];
+  B.dataset.scene = i; B.dataset.wx = ''; B.dataset.g = 0; B.removeAttribute('data-env'); B.removeAttribute('data-end');
+  B.toggleAttribute('data-late', i >= 5); B.toggleAttribute('data-love', i >= 6); B.toggleAttribute('data-fly', i >= 6);
+  set({ pose: 'idle', eyes: 'open', mouth: 'smile', held: '' }); card.classList.remove('on');
+  if (i > 0) sc(1);
+  SC[i]();
+  if (i < 7) at(DUR[i], () => enter(i + 1));
+}
+function onScroll() {
+  S.style.setProperty('--sp', scrollY);
+  const max = document.documentElement.scrollHeight - innerHeight;
+  const i = Math.max(0, Math.min(7, Math.round(scrollY / max * 7)));
+  if (i !== cur) enter(i);
+}
+/* AUTO-ADVANCE: seconds each scene stays before moving on (edit me). Tap anywhere to skip ahead. */
+const DUR = [12, 10.5, 12, 13.5, 14.5, 15.5, 10];
+let lastTap = 0;
+document.addEventListener('click', e => { if (e.target.closest('.music')) return; const n = Date.now(); if (n - lastTap < 700) return; lastTap = n; if (cur < 7) enter(cur + 1); });
+
+/* ===== PARTICLES (sparkles, hearts, rain) ===== */
+const fx = document.getElementById('fx');
+for (let i = 0; i < 28; i++) {
+  const e = document.createElement('i'), h = i >= 22; e.className = h ? 'p hp' : 'p'; e.textContent = h ? '♥' : '✦';
+  e.style.cssText = `left:${Math.random() * 100}%;font-size:${8 + Math.random() * 12}px;animation-duration:${10 + Math.random() * 10}s;animation-delay:-${Math.random() * 15}s`;
+  fx.append(e);
+}
+for (let i = 0; i < 40; i++) {
+  const d = document.createElement('i'); d.className = 'drop';
+  d.style.cssText = `left:${Math.random() * 100}%;animation-duration:${.7 + Math.random() * .5}s;animation-delay:-${Math.random()}s`;
+  S.append(d);
+}
+
+/* ===== MUSIC — tap ♪ to start. Uses assets/music.mp3 if present, otherwise a soft built-in lullaby. ===== */
+let fileOk = null, playing = false, muted = false, ac, master, bus, tm, bar = 0;
+const au = new Audio(MUSIC_FILE); au.loop = true; au.volume = 0; au.preload = 'auto';
+au.addEventListener('canplay', () => fileOk = true); au.addEventListener('error', () => fileOk = false);
+const pb = document.getElementById('play'), mb = document.getElementById('mute');
+const CH = [[130.8,196,261.6,329.6],[110,164.8,220,261.6],[87.3,130.8,174.6,220],[98,146.8,196,246.9]]; // C Am F G
+const PE = [523.3,587.3,659.3,784,880,1046.5];
+function initSynth() {
+  ac = new (window.AudioContext || window.webkitAudioContext)(); master = ac.createGain(); master.gain.value = 0;
+  const lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2600; bus = ac.createGain(); bus.connect(lp);
+  const dl = ac.createDelay(); dl.delayTime.value = .34; const fb = ac.createGain(); fb.gain.value = .35;
+  lp.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(master); lp.connect(master); master.connect(ac.destination);
+}
+function tone(f, t, d, v, type) {
+  const o = ac.createOscillator(), g = ac.createGain(); o.type = type; o.frequency.value = f;
+  g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(v, t + .04); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+  o.connect(g); g.connect(bus); o.start(t); o.stop(t + d + .1);
+}
+function bars() {   // one bar of gentle pad + music-box arpeggio; rain = slower, happy scene = livelier
+  if (!playing || fileOk === true) return;
+  const L = [3.6,3.6,3.6,3.6,4.4,2.8,3.6,3.6][Math.max(cur, 0)], t = ac.currentTime + .1, c = CH[bar++ % 4], n = cur === 4 ? 4 : cur === 5 ? 8 : 6;
+  c.forEach((f, i) => tone(f, t, L + .6, i ? .035 : .06, 'triangle'));
+  for (let k = 0; k < n; k++) if (Math.random() < .85) tone(Math.random() < .6 ? c[1 + k % 3] * 2 : PE[Math.random() * PE.length | 0], t + k * L / n, 1.6, .07, 'sine');
+  tm = setTimeout(bars, L * 1000);
+}
+pb.onclick = () => {
+  playing = !playing; pb.classList.remove('pulse'); pb.textContent = playing ? '❚❚' : '♪';
+  pb.setAttribute('aria-label', playing ? 'Pause music' : 'Play music');
+  if (playing) {
+    if (!ac) initSynth(); ac.resume();
+    if (fileOk !== false) au.play().then(() => fileOk = true).catch(() => { fileOk = false; bar = 0; bars(); });
+    else { bar = 0; bars(); }
+  } else { au.pause(); clearTimeout(tm); }
+};
+mb.onclick = () => { muted = !muted; mb.textContent = muted ? '🔇' : '🔊'; };
+setInterval(() => {
+  const t = playing && !muted ? VOLUME[Math.max(cur, 0)] : 0;
+  au.volume = Math.min(1, Math.max(0, au.volume + (t - au.volume) * .12));
+  if (master) master.gain.value += (t * 2.2 - master.gain.value) * .12;
+}, 100);
+
+/* ===== START ===== */
+history.scrollRestoration = 'manual'; scrollTo(0, 0);
+requestAnimationFrame(() => requestAnimationFrame(() => enter(0)));
+setTimeout(() => B.setAttribute('data-ready', ''), 3000);
+
+</script>
+</body></html>
